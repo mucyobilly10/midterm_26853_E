@@ -1,24 +1,26 @@
-﻿# Supermarket Spring Boot API
+﻿![Supermarket Logo](assets/supermarket-logo.svg)
+
+# 🛒 Supermarket Spring Boot API
 
 Modern, clean REST API for a supermarket domain using Spring Boot and PostgreSQL. Built for the Database & Spring Boot Application Development practical examination (February 20, 2026).
 
-## Author
+## 👤 Author
 Mucyo Billy
 
-## Modern Highlights
+## ✨ Modern Highlights
 - Clean layered architecture: controllers, services, repositories, and domain models.
 - Strong data integrity with `existsBy(...)` checks to prevent duplicates.
 - Pageable and sortable product queries for scalable retrieval.
 - Hierarchical location modeling with explicit parent-child validation.
 - Many-to-many supplier linking with a dedicated join table.
 
-## Tech Stack
+## 🧰 Tech Stack
 - Java 17
 - Spring Boot, Spring Data JPA
 - PostgreSQL
 - Maven
 
-## Requirements Mapping (Exam Rubric)
+## 🧾 Requirements Mapping (Exam Rubric)
 - ERD with at least five tables: implemented with `users`, `user_profiles`, `locations`, `categories`, `products`, `suppliers`, and join table `product_suppliers`.
 - Save Location: locations are stored with hierarchical parent linkage and type validation.
 - Sorting and Pagination: implemented for products using Spring Data `PageRequest` and `Sort`.
@@ -28,13 +30,13 @@ Mucyo Billy
 - `existsBy(...)` methods: used to prevent duplicates for location code, product name, category name, supplier email, user email, and user profile.
 - Retrieve users by province code or name: query joins through the location hierarchy from village up to province.
 
-## Data Model
+## 🧩 Data Model
 - `Location` is hierarchical with `parent` and `type` (`PROVINCE`, `DISTRICT`, `SECTOR`, `CELL`, `VILLAGE`).
 - `User` belongs to a `village` (location of type `VILLAGE`).
 - `UserProfile` is a one-to-one extension of `User`.
 - `Product` belongs to one `Category` and can have many `Suppliers`.
 
-## ERD Diagram
+## 🗺️ ERD Diagram
 ```mermaid
 erDiagram
     CATEGORY ||--o{ PRODUCT : has
@@ -88,7 +90,7 @@ erDiagram
     }
 ```
 
-## API Endpoints
+## 🔌 API Endpoints
 Base URL: `http://localhost:8080`
 
 Locations
@@ -119,14 +121,14 @@ Products
 - `GET /api/products/sorted` get products with `page`, `size`, and `sortBy`.
 - `GET /api/products/by-category` list products by `categoryId`.
 
-## Key Logic Notes
+## 🧠 Key Logic Notes
 - Location save enforces a parent for any non-province location and prevents duplicate codes.
 - User save resolves the village by code or name and prevents duplicate emails.
 - Product save validates the category and links multiple suppliers if provided.
 - Pagination and sorting are implemented with Spring Data `PageRequest` and `Sort`.
 - Province-based user retrieval walks the location chain: `village -> cell -> sector -> district -> province`.
 
-## Quick Start
+## 🚀 Quick Start
 1. Ensure PostgreSQL is running and a database named `supermarket_db` exists.
 2. Update credentials in `src/main/resources/application.properties` if needed.
 3. Start the app:
@@ -135,9 +137,9 @@ Products
 ./mvnw spring-boot:run
 ```
 
-## Screenshots
+## 🖼️ Screenshots
 
-### Postman
+### 🧪 Postman
 
 #### saving a province in postman
 ![saving a province in postman](screen%20shots/saving%20a%20province%20in%20postman.png)
@@ -181,7 +183,7 @@ Products
 #### saving userprofile in postman
 ![saving userprofile in postman](screen%20shots/saving%20userprofile%20in%20postman.png)
 
-### Postgres
+### 🗄️ Postgres
 
 #### data base tables in postgre
 ![data base tables in postgre](screen%20shots/data%20base%20tables%20in%20postgre.png)
