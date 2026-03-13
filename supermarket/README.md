@@ -1,10 +1,25 @@
 ﻿# Supermarket Spring Boot API
 
-## Overview
-This project is a Spring Boot + PostgreSQL API for a supermarket domain. It was built as a practical examination for Database & Spring Boot Application Development (February 20, 2026). The implementation follows the exam rubric and demonstrates core entity relationships, CRUD operations, existence checks, and query logic for locations and users.
+Modern, clean REST API for a supermarket domain using Spring Boot and PostgreSQL. Built for the Database & Spring Boot Application Development practical examination (February 20, 2026).
 
-## Exam Requirements Mapping
-- ERD with at least five tables: implemented with `users`, `user_profiles`, `locations`, `categories`, `products`, and `suppliers`, plus join table `product_suppliers`.
+## Author
+Mucyo Billy
+
+## Modern Highlights
+- Clean layered architecture: controllers, services, repositories, and domain models.
+- Strong data integrity with `existsBy(...)` checks to prevent duplicates.
+- Pageable and sortable product queries for scalable retrieval.
+- Hierarchical location modeling with explicit parent-child validation.
+- Many-to-many supplier linking with a dedicated join table.
+
+## Tech Stack
+- Java 17
+- Spring Boot, Spring Data JPA
+- PostgreSQL
+- Maven
+
+## Requirements Mapping (Exam Rubric)
+- ERD with at least five tables: implemented with `users`, `user_profiles`, `locations`, `categories`, `products`, `suppliers`, and join table `product_suppliers`.
 - Save Location: locations are stored with hierarchical parent linkage and type validation.
 - Sorting and Pagination: implemented for products using Spring Data `PageRequest` and `Sort`.
 - Many-to-Many: products and suppliers via `product_suppliers`.
@@ -111,7 +126,7 @@ Products
 - Pagination and sorting are implemented with Spring Data `PageRequest` and `Sort`.
 - Province-based user retrieval walks the location chain: `village -> cell -> sector -> district -> province`.
 
-## Running The Project
+## Quick Start
 1. Ensure PostgreSQL is running and a database named `supermarket_db` exists.
 2. Update credentials in `src/main/resources/application.properties` if needed.
 3. Start the app:
